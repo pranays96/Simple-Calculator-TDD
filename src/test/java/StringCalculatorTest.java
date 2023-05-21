@@ -33,8 +33,11 @@ public class StringCalculatorTest {
         int result = calculator.add("//;\n1;2");
         Assertions.assertEquals(3, result);
     }
-
-
+    @Test
+    void testAddWithNegativeNumbers() {
+        StringCalculator calculator = new StringCalculator();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,2,-3"));
+    }
 
 
 }

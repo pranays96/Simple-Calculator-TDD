@@ -15,6 +15,7 @@ public class StringCalculator {
             for (String number : numberArray) {
                 sum += Integer.parseInt(number);
             }
+
             return sum;
         }
     }

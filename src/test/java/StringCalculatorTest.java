@@ -9,5 +9,12 @@ public class StringCalculatorTest {
         int result = calculator.add("");
         Assertions.assertEquals(0, result);
     }
+    @Test
+    void testAddSingleNumber() {
+        StringCalculator calculator = new StringCalculator();
+        int result = calculator.add("1");
+        Assertions.assertEquals(1, result);
+    }
+
 }
 

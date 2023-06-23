@@ -1,21 +1,22 @@
 # Simple-Calculator-TDD
-To create a Simple String Calculator using TDD.
+To create a Simple String Calculator using TDD(Test Driven Development).
 # TDD Exercise
 ## Purpose
 Learn to use Test Driven Development to create a program.
 
 ### Steps-
-1. Create a String calculator with a method int Add(string numbers)
-    1. The method can take 0, 1, or 2 numbers and will return their sum.
-    2. An empty string will return 0.
-2. Allow the Add method to handle an unknown amount of numbers.
-3. Allow the Add method to handle new lines between numbers (instead of commas).
-   1. The following input is ok: "1\n2,3" (will equal 6)
-   2. The following input is NOT ok: "1,\n" (not need to prove it - just clarifying)
-4. Support different delimiters
-   1. To change a delimiter, the beginning of the string will contain a separate line that looks like this: "//[delimiter]\n[numbers…]" for example "//;\n1;2" should return three where the default delimiter is ";"
-   2. The first line is optional. all existing scenarios should still be supported.
-5. Calling Add with a negative number will throw an exception "negatives not allowed" - and the negative that was passed.
+1. Create a String calculator: int Add(string numbers)
+    * Handles 0, 1, or 2 numbers and returns their sum.
+    * Empty string input returns 0.
+2. Allow the unknown amount of numbers.
+3. Handle new lines between numbers (instead of commas).
+    * Example: "1\n2,3" returns 6.
+    * "1,\n" is invalid.
+4. Support different delimiters.
+    * Use the "//[delimiter]\n[numbers...]" format to change delimiter.
+    * Example: "//;\n1;2" returns 3 (default delimiter is ";").
+5. Negative numbers throw the "Negatives not allowed" exception.
+    * The exception includes the negative value passed.
  
    
 

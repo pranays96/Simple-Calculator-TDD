@@ -34,6 +34,13 @@ public class StringCalculatorTest {
         Assertions.assertEquals(3, result);
     }
     @Test
+    void testAddWithMultipleDelimiters() {
+        StringCalculator calculator = new StringCalculator();
+        int result = calculator.add("//;,\n1;2,3");
+        Assertions.assertEquals(6, result);
+    }
+
+    @Test
     void testAddWithNegativeNumbers() {
         StringCalculator calculator = new StringCalculator();
         Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,2,-3"));

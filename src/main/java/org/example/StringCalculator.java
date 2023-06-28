@@ -10,23 +10,47 @@ public class StringCalculator {
         } else {
             String delimiter = ",";
             if (numbers.startsWith("//")) {
-                delimiter = numbers.substring(2, numbers.indexOf("\n"));
-                numbers = numbers.substring(numbers.indexOf("\n") + 1);
+                delimiter = extractDelimiter(numbers);
+                numbers = removeDelimiterDefinition(numbers);
             }
-            String[] numberArray = numbers.split("[" + delimiter + "\n]");
-            int sum = 0;
-            List<Integer> negatives = new ArrayList<>();
-            for (String number : numberArray) {
-                int num = Integer.parseInt(number);
-                if (num < 0) {
-                    negatives.add(num);
-                }
-                sum += num;
-            }
-            if (!negatives.isEmpty()) {
-                throw new IllegalArgumentException("Negatives are not allowed: " + negatives);
-            }
+            String[] numberArray = splitNumbers(numbers, delimiter);
+            int sum = calculateSum(numberArray);
+            checkForNegativeNumbers(numberArray);
             return sum;
+        }
+    }
+
+    private String extractDelimiter(String numbers) {
+        return numbers.substring(2, numbers.indexOf("\n"));
+    }
+
+    private String removeDelimiterDefinition(String numbers) {
+        return numbers.substring(numbers.indexOf("\n") + 1);
+    }
+
+    private String[] splitNumbers(String numbers, String delimiter) {
+        return numbers.split("[" + delimiter + "\n]");
+    }
+
+    private int calculateSum(String[] numberArray) {
+        int sum = 0;
+        for (String number : numberArray) {
+            int num = Integer.parseInt(number);
+            sum += num;
+        }
+        return sum;
+    }
+
+    private void checkForNegativeNumbers(String[] numberArray) {
+        List<Integer> negatives = new ArrayList<>();
+        for (String number : numberArray) {
+            int num = Integer.parseInt(number);
+            if (num < 0) {
+                negatives.add(num);
+            }
+        }
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negatives are not allowed: " + negatives);
         }
     }
 }
